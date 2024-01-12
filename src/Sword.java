@@ -7,7 +7,16 @@ public class Sword {
         dodgeRating = 20;
     }
 
-    public void upgradeSword(int upgrade) {
+    public int getAtkPower() {
+        return atkPower;
+    }
 
+    public int getDodgeRating() {
+        return dodgeRating;
+    }
+
+    public void upgradeSword(int upgrade) {
+        atkPower = upgrade;
+        dodgeRating = upgrade / 2;
     }
 }

@@ -3,6 +3,7 @@ public class Room {
     private boolean searched;
     private String roomName;
     private int dragonCount;
+    private Player player;
 
     public Room() {
         searched = false;
@@ -14,22 +15,30 @@ public class Room {
         return roomNumber;
     }
 
-    public void searchRoom() {
-        searched = true;
+    public String getRoomName() {
+        return roomName;
+    }
 
+    public void searchRoom() {
+        if (!searched) {
+            int chance = (int) (Math.random() * 2);
+            if (chance == 1) {
+                player.addPotion();
+            } searched = true;
+        }
     }
 
     private void generateName() {
         if (roomNumber == 1) {
-            roomName = "";
+            roomName = "The Den";
         } else if (roomNumber == 2) {
-            roomName = "";
+            roomName = "The Hatchery";
         } else if (roomNumber == 3) {
-            roomName = "";
+            roomName = "The Lair";
         } else if (roomNumber == 4) {
-            roomName = "";
+            roomName = "The Trials";
         } else {
-            roomName = "";
+            roomName = "The Depths";
         }
     }
 }
