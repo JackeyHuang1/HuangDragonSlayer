@@ -2,8 +2,6 @@ public class Room {
     private static int roomNumber = 0;
     private boolean searched;
     private String roomName;
-    private int dragonCount;
-    private Player player;
 
     public Room() {
         searched = false;
@@ -11,24 +9,36 @@ public class Room {
         generateName();
     }
 
-    public int getRoomNumber() {
+    public static int getRoomNumber() {
         return roomNumber;
     }
 
     public String getRoomName() {
+        generateName();
         return roomName;
     }
 
-    public void searchRoom() {
-        if (!searched) {
-            int chance = (int) (Math.random() * 2);
-            if (chance == 1) {
-                player.addPotion();
-            } searched = true;
-        }
+    public boolean getSearched() {
+        return searched;
     }
 
-    private void generateName() {
+    public boolean searchRoom() { // checks if there is a potion in the room
+        boolean found = false;
+        if (searched) {
+            System.out.println("You have already searched the room.");
+        } else {
+            int chance = (int) (Math.random() * 2);
+            if (chance == 1) {
+                System.out.println("You found a potion!");
+                found = true;
+            } else {
+                System.out.println("There was no potion in this room.");
+            }
+            searched = true;
+        } return found;
+    }
+
+    private void generateName() { // gets the room name that corresponds with the number
         if (roomNumber == 1) {
             roomName = "The Den";
         } else if (roomNumber == 2) {
